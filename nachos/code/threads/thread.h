@@ -83,6 +83,20 @@ class Thread {
     int machineState[MachineStateSize];  // all registers except for stackTop
 
   public:
+  
+  
+    int time_start; // To store the time when the program started executing
+    int time_total; // total time of the thread
+    int time_cpu; // Stores the amount of cpu time of the process
+    int start_cpu_burst; // When the cpu burst starts   
+    int previous_cpu_burst; // This is the previous CPU burst time
+    double estimated_cpu_burst; // the estimated value
+    int start_wait_time; // waiting time for the threads
+    int time_wait; // to store the total wait time of the thread
+    int time_block; // stores the time for which the thread is blocked
+    int start_block; // start time of block
+    bool timer_Yield; // to note a timer yield
+
     Thread(char* debugName);		// initialize a Thread 
     Thread(char* debugName, int givenPriority, bool haveParent);
     ~Thread(); 				// deallocate a Thread
