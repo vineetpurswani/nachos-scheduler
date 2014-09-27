@@ -44,6 +44,19 @@ Thread::Thread(char* threadName)
     space = NULL;
 #endif
 
+
+    estimated_cpu_burst = 200.0;
+    start_wait_time = 0;
+    time_wait = 0;
+    time_cpu = 0;
+    start_cpu_burst = 0;  
+    previous_cpu_burst = 0.0;
+    time_block = 0;
+    start_block = 0; 
+    timer_Yield = false;
+    time_start = 0;
+    time_total = 0;
+    
     threadArray[thread_index] = this;
     pid = thread_index;
     thread_index++;
@@ -74,6 +87,20 @@ Thread::Thread(char* threadName, int givenPriority, bool haveParent)
     space = NULL;
 #endif
 
+
+    estimated_cpu_burst = 200.0;
+    start_wait_time = 0;
+    time_wait = 0;
+    time_cpu = 0;
+    start_cpu_burst = 0;  
+    previous_cpu_burst = 0.0;
+    time_block = 0;
+    start_block = 0; 
+    timer_Yield = false;
+    time_start = 0;
+    time_total = 0;
+    
+
     threadArray[thread_index] = this;
     pid = thread_index;
     thread_index++;
@@ -90,7 +117,7 @@ Thread::Thread(char* threadName, int givenPriority, bool haveParent)
     for (i=0; i<MAX_CHILD_COUNT; i++) exitedChild[i] = false;
 
     instructionCount = 0;
-		basePriority = givenPriority;
+		basePriority = 50 + givenPriority;
 		priority = basePriority;
 }
 
